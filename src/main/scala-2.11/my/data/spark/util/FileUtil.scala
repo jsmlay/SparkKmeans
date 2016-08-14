@@ -4,7 +4,7 @@ import org.apache.spark.SparkContext
 import org.apache.spark.rdd.RDD
 
 /**
-  * @author jiangshimiao1@jd.com  
+  * @author jsmlay@sina.com
   * @version 2016/8/14
   */
 object FileUtil {
@@ -23,7 +23,7 @@ object FileUtil {
             .filter(x => x.length == featureLen)
     }
 
-    def loadLabel(filePath: String, featureLen: Int, sc: SparkContext): Vector[Int] = {
+    def loadLabel(filePath: String, sc: SparkContext): Vector[Int] = {
         sc.textFile(filePath).map(x => x.split(",").map(y => y.trim.toDouble).head.toInt).collect().toVector
     }
 }
